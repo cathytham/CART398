@@ -1,18 +1,19 @@
 // @title W01-04
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 11, 2026
+// @by cathytham
+// @date Jan 17, 2026
 
 // 04
-samples('github:tidalcycles/dirt-samples')
-stack(
+setcps(1)
 
-  stack(
-  s("[bd sd]!2"),
-  s("hh*8").gain(0.2)
-  ).bank("RolandTR909"),
-  note("f#2 c#2 e2 f#2 e2 c#2 b1 c#2")
-      .sound("sawtooth")
-      .lpf(120)
-      .lpq(10)
+stack(
+  note("c4 g4 e4 c5 g5 e5 b4 d5")
+    .sound("sine")
+    .lpf(220)
+    .lpq(6)
+  ,
+  note("c4 d4 [e4 g4] b4 ~ a4 c5 e5")
+    .sound("sine")
+    .lpf(100)
+    .lpq(5)
 )
