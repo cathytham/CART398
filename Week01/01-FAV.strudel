@@ -1,9 +1,10 @@
 // @title W01-01
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 1, 2026
+// @by cathytham
+// @date Jan 17, 2026
 
 // 01
-sound("bd [~ rim] mt [lt ht]")
-  .dist("2:0.5")
-  .chunk(4, x => x.hurry(2))
+setcps(0.75)
+sound("bd sd cp . hh hh")
+  .gain(0.6)
+  .chunk(2, x => x.hurry(2))
