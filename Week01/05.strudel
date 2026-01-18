@@ -1,15 +1,19 @@
 // @title W01-05
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 5, 2026
+// @by cathytham
+// @date Jan 18, 2026
 
 // 5
-setcps(150/60/4)
-d1: s("bongo:1").euclid(3,8).off(1/4, add(2)).delay(0.025).pan(0)
-d2: s("bongo:2").euclid(5,8).off(1/4, add(2)).delay(0.025).pan(1)
-// d3: s("bongo:12").euclid(6,8).pan(sine)
-d4: s("hh:3*4").gain(0.125)
-$: s("east:0*4").gain(0.125)
-$: s("east:2*8").gain(0.0325)
+setcps(1)
 
-d3: s("bongo*8").n(irand(10))
+stack(
+  s("[gm_synth_strings_1 pluck:2 pluck:3]*2")
+    .gain(0.5)
+    .pan(-0.2),
+
+  note("c5 e5 g5 c6 e6 g6 b5 c6 ")
+    .sound("sine")
+    .lpf(220)
+    .lpq(4)
+    .gain(0.5)
+)
