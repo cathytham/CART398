@@ -1,0 +1,23 @@
+// @title W02-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 25, 2026
+
+samples( {
+  bassdrum:'https://cdn.freesound.org/previews/140/140718_367313-lq.mp3',
+  car_door:'https://cdn.freesound.org/previews/260/260073_3877322-lq.mp3'
+})
+
+stack(
+  s("bassdrum")
+    .euclid(5, 8)
+    .gain(0.9),
+
+  s("car_door gm_gunshot:8!4")
+    .euclid(3, 8)
+    .gain(0.5),
+
+  s("<kawai bytebeat>@3")
+    .euclid(4, 8)
+    .gain(0.4)
+).every(2, x=>x.fast(2))
