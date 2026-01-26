@@ -1,0 +1,44 @@
+// @title W02-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 26, 2026
+
+samples({
+  sound: 'https://cdn.freesound.org/previews/843/843084_17707799-lq.mp3',
+  sound_2:'https://cdn.freesound.org/previews/843/843083_17707799-lq.mp3'
+})
+
+stack(
+  s("bd")
+    .euclid(5, 8)
+    .gain(0.9),
+
+  s("[voodoo:2 rim]")
+    .euclid(3, 8)
+    .gain(0.7),
+
+  s("hh")
+    .euclid(7, 16)
+    .gain(0.5),
+
+  s("balafon:6")
+    .euclid(3, 8)
+    .gain(0.6),
+
+  s("[casio:3 kawai:37]")
+    .euclid(2, 7)
+    .gain(0.6),
+
+  s("[sound_2:2 sound_2:1 ~ sound_2:3]")
+    .euclid(3, 8)
+    .gain(0.5),
+
+  s("<sound:1 ~ sound:2 sound:3>")
+    .euclid(2, 5)
+    .gain(0.5),
+
+  s("sound")
+    .euclid(1, 8)
+    .gain(2)
+)
+.every(4, x => x.slow(2))
