@@ -1,0 +1,27 @@
+// @title W02-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 25, 2026
+
+setcps(150/60/4)
+
+stack(
+  s("[incoming ~ yeah:1  incoming:5]")
+    .euclid(5, 8)
+    .gain(1),
+
+  s("miniyeah:2*5")
+    .euclid(3, 8)
+    .gain(0.6),
+
+  s("if")
+    .euclid(7, 16)
+    .gain(0.5)
+    .pan(rand),
+
+  s("rave2")
+    .euclid(2, 7)
+    .slow(2)
+    .gain(0.3)
+    .room(0.5)
+)
