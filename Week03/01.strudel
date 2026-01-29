@@ -1,0 +1,26 @@
+// @title W03-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 29, 2026
+
+setcps(170/60/4)
+
+$: n("[0 2 7] ~ 9 5 7 6 | 3 2 1")
+  .s("808bd")
+  .gain(0.6)
+
+$: n("[3 0 1] 6 7")
+  .s("808")
+  .gain(0.6)
+
+$: note("c a f e".add("<<0 12> 19 24>"))
+  .lpf(350)
+  .fast(1.5)
+  .delay(0.5)
+  .gain(0.35)
+
+$: n("~ 0 12 ~ 19 24")
+    .s("handbells")
+    .octave(2)
+    .legato("<0.3 0.8>")
+    .gain("0.35")
