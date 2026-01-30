@@ -1,0 +1,36 @@
+// @title W03-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 29, 2026
+
+samples({ 
+  sound: 'https://cdn.freesound.org/previews/843/843089_9034501-lq.mp3', 
+  sound_2: 'https://cdn.freesound.org/previews/799/799008_16840242-hq.mp3' }) 
+  
+setcps(170/60/4) 
+  
+$: s("sound").begin(0.45).end(0.5) .slice(8, "0 <1 5 3 7> 0 <4 0 2> | <3 2 5>") 
+  .speed("1 0.5 1 -2 -4") 
+  .gain(2) 
+  .scrub("{<0.1 0.3> <0.9@2 0.3> <0.65 0.48@3> .2 0.5 <0.2!2 0.6:1>}").speed(0.5).delay(0.5) 
+  
+$: n("[9 2 2]*2") .s("kawai") 
+  .scale("minor") 
+  .octave(6) 
+  .gain(0.2) 
+  .pan("<-0.4 0.4>") 
+  
+$: note("[<d2 e2*2> g3?0.4 <~ [f3*2 a3]>]")
+  .sound("sound_2") 
+  .delayfeedback("0.1") 
+  .room(0.3) 
+  .speed("1.8") 
+  .hpf("1900") 
+  
+$: s("sound")
+  .begin(0.45)
+  .end(0.52) 
+  .struct("[x ~ x ~]") 
+  .gain(0.2) 
+  .every(4, x => x.fast(1/8)) 
+  .punchcard({ color: 'hsl(210,80%,60%)', background: 'rgba(180,210,255,0.6)'})
