@@ -1,0 +1,40 @@
+// @title W03-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 30, 2026
+
+setcps(200/60/8)
+
+$: sound(`
+[- hh - - ] [- - cp:3 -] [hh  -  - ] [-  bd:3  -  bd ],
+[- hh:4 -  - ] [hh -  hh - ] [hh:4 -  hh - ] [hh:2 -  hh - ],
+[hh  -  cp:2 - ] [cp:2 -  -  - ] [-  bd  -  - ] [cp:2 -  -  - ],
+[- -  -  - ] [-  -  -  bd] [-  - cp - ] [-  cp  -  bd],
+[cp:2 -  bd  - ] [-  hh:4  -  ] [hh  - cp - ] [-  cp  -  hh]`)
+  .gain(0.4)
+  .every(4, x=>x.slow(2))
+
+$: s("[bd <hh oh>]*2")
+  .bank("tr909")
+  .dec(0.35)
+  .gain(0.7)
+
+$: n("1 0 2 3".fast(2))
+    .s("bytebeat")
+    .gain(0.5)
+    .delay(0.5)
+
+$: s("gm_cello:12@3 ~ ")
+  .gain(0.35)
+  .legato(1.8)
+  .slow(2)
+
+$: s("<~ bd bd ~>*2")
+  .gain(0.8)
+
+$: s("<~ sd ~ sd>*2")
+  .gain(0.3)
+
+$: s("<hh hh hh hh>*4")
+  .gain(0.8)
+.scope()
