@@ -1,0 +1,43 @@
+// @title W03-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 30, 2026
+
+setcps(130/60/4)
+
+$: n("<<2,4, 1 3>*2 <5,[2  5 ]@2>>")
+  .delay("0 1 -1.5 4 0 1 1")
+  .lpf(2000)
+
+$: s("<bd bd bd>*2")
+   .gain(0.8)
+
+$: s("~ bd:6(3,8,<1 2>)")
+  .gain(0.6)
+  .lpf(900)
+
+$: s("hh(5,8)*1.5")
+  .gain(0.25)
+  .degradeBy(0.3)
+  .delay("0 0.25")
+
+$: s("cp(2,8)")
+  .gain(0.3)
+  .delay(0.5)
+
+$: n("<0 0 -1 0>")
+  .s("gm_bass_finger")
+  .gain(0.35)
+  .legato(1.2)
+  .lpf(700)
+
+$: n("2 5 <7 2>")
+  .s("bytebeat")
+  .gain(0.5)
+  .slow(2)
+  .delay(0.75)
+  .every(4, x=>x.fast(2))
+.punchcard({ color: 'hsl(210,80%,60%)', background: 'rgba(180,210,255,0.6)'})
+
+
+
