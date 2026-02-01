@@ -1,0 +1,46 @@
+// @title W03-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Jan 31, 2026
+
+
+setcps(160/60/4);
+
+$: s("<bd:6(4,8) hh:3>")
+  .gain(0.7)
+  .lpf(1200)
+  .every(4, x => x.slow(2));
+
+$: n("<2 4 <7 9> <5 3>>")
+  .s("gm_lead_1_square")
+  .gain(0.3)
+  .slow(2)
+  .mask("1 0 0 1 0 1 0 0 1 0 0 1 0 1 0 0")           
+  .every(16, x => x.fast(1.2))          
+
+$: s("hh(5,16)")
+  .gain(0.25)
+  .delay("0 -0.15 0.25")
+  .every(8, x => x.fast(1.1));
+
+$: s("<~ sd:3 ~ rim:2 ~>")
+  .gain(0.35)
+  .room(0.3)
+  .every(6, rev);
+
+$: n("<0 2 5 <7 4>>")
+  .s("gm_lead_1_square")
+  .gain(0.35)
+  .legato(1.2)
+  .lpf(900)
+  .slow(2)
+
+$: s("kawai")
+  .gain(0.15)
+  .hpf(300)
+  .every(5, x => x.fast(2).gain(0.6))
+
+$: s("<~ sd sd ~>")
+  .gain(0.25)
+  .delay(0.5)
+  .every(4, x => x.fast(2))
