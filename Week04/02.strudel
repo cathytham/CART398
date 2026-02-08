@@ -1,0 +1,28 @@
+// @title W04-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Feb 07, 2026
+
+//02
+
+$: n("0 1 2 4 .. 7 8 10 .. 13")
+  .scale("c3:iwato prometheus c3:minor:blues")
+  .delay(1.5)
+  .sound("sine") 
+  .delay(0.5)     
+  .gain(0.9)    
+  .ply("<3 2>")   
+  .slow(1.5)
+
+$: n("[9 2 2]*2")
+  .s("kawai") 
+  .scale("minor") 
+  .octave(6) 
+  .gain(0.1) 
+  .pan("<-0.4 0.4>") 
+  .slow(2)
+  .every(4, x => x.room(0.3).degradeBy(0.1))
+
+$: note("c4 d4 [e4 g4]*2 b4 ~ a4 c5 e5")
+    .sound("sine")
+    .gain(0.5)
