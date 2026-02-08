@@ -1,0 +1,43 @@
+// @title W04-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 07, 2026
+
+// 03
+
+samples({
+  drip: 'https://cdn.freesound.org/previews/548/548312_861714-lq.mp3'
+})
+
+d1: s("drip drip*1/2")
+  .gain(1.0)                  
+  .room(0.4)
+  .delayt("<0.25 0.5 0.75>")     
+  .delayfb(0.08)                  
+  .every(6, x => x.degradeBy(0.1))
+  .pan("<-0.3 0.3>")
+
+d2: n("0 2 7 8 10")
+  .scale("c3:iwato prometheus c3:minor:blues")
+  .sound("sine")
+  .octave(3)
+  .gain(0.4)
+  .ply("<2 3>")                  
+  .delayt(0.33)
+  .delayfb(0.05)
+  .every(8, x => x.degradeBy(0.15))
+  .slow(1.2)
+  .pan("<-0.2 0.2>")
+
+
+d3: n("0 3 5 7 10")
+  .scale("c3:iwato prometheus")
+  .sound("sine")
+  .lpf(700)
+  .lpq(6)
+  .gain(0.35)
+  .ply("<3 2>")
+  .delay("<0.25 0.5>")
+  .every(16, x => x.degradeBy(0.1))
+  .slow(1.5)
+  .pan("<-0.3 0.3>")
