@@ -1,0 +1,23 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date Feb 07, 2026
+
+//01
+
+$: chord("<Bm G D A Bm G D A Bm G D A>").voicing()
+  .every(4, x => x.slow(2).ply("<4 3>").gain(0.6))
+  .degradeBy(0.1)
+  .room(0.3)
+  .delay(0.25)
+  .gain(0.7)
+
+d1: stack(
+  s("[bd:1 ~]*8")
+  .gain(0.4),
+  n("0 2 4, 6 4 2")
+    .scale("C:major")
+)
+.every(4, x => x.slow(2))
+.every(8, x => x.ply(2))
+.degradeBy(0.1)
