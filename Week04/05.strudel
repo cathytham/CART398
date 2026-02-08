@@ -1,0 +1,42 @@
+// @title W04-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 08, 2026
+
+// 05
+
+samples({
+  sound: 'https://cdn.freesound.org/previews/825/825724_9415332-lq.mp3'
+})
+
+d1: s("sound*8")
+  .speed("<0.5 0.8 1 -1>")      
+  .gain(0.4)
+  .every(4, x => x.ply(2))        
+  .every(8, x => x.slow(2))      
+  .pan("<-0.5 0.5>")
+  .room(0.3)
+
+
+d2: n("0 ~ 3 5 7 ~ 5 3")
+  .scale("c2:minor")
+  .sound("sine")
+  .gain(0.6)
+  .lpf(400)
+  .slow(2)
+
+
+d3: s("[click*16?0.5 rim?0.3]")
+  .every(4, x => x.hurry(2))
+  .every(8, x => x.degradeBy(0.3))
+  .gain(0.3)
+  .pan("<-0.4 0.4>")
+
+d4: n("7 10 12 14 12 10")
+  .scale("c4:minor")
+  .sound("triangle")
+  .gain(0.25)
+  .delayt("<0.25 0.5>")
+  .delayfb(0.15)
+  .slow(2)
+  .pan("<-0.3 0.3>")
