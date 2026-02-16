@@ -1,0 +1,51 @@
+// @title W05-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 16, 2026
+
+samples({
+  bubble: 'https://cdn.freesound.org/previews/274/274178_5123851-lq.mp3',
+  perc: 'https://cdn.freesound.org/previews/240/240777_4107740-lq.mp3'
+})
+
+d1: s("bubble*2 ~")
+  .slow(2)
+  .gain(0.5)
+  .room(0.8)
+  .delayt("<0.25 0.5>")
+  .delayfb(0.2)
+  .pan("<-0.4 0.4>")
+
+d2: s("[bd ~ hh ~] [~ hh ~ sd]")
+  .gain(0.7)
+  .cut(1)
+  .room(0.2)
+
+d3: n("0 <2 5> 7 10 <7 5>")
+  .scale("c4:minor")
+  .sound("<triangle sine>")
+  .gain(0.45)
+  .delayt(0.33)
+  .delayfb(0.2)
+  .ply("<2 3>")
+  .pan("<1 0.3>")
+  .every(8, x => x.rev())
+
+d4: note("c2 ~ g1 bb1")
+  .sound("sawtooth")
+  .lpf(500)
+  .gain(0.5)
+  .slow(2)
+  .pan("<-0.2 0.2>")
+
+d5: n("<7 10 12 14>")
+  .scale("c5:minor")
+  .sound("sine")
+  .gain(0.25)
+  .delayt(0.5)
+  .delayfb(0.3)
+  .room(0.7)
+  .slow(4)
+  .pan("<0 0.5>")
+
+d7: s("[bd <hh oh>]*2").bank("tr909").dec(.4)
