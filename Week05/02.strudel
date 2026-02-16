@@ -1,0 +1,41 @@
+// @title W05-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 16, 2026
+
+samples({
+  bubble: 'https://cdn.freesound.org/previews/739/739834_5287430-lq.mp3',
+  clicky: 'https://cdn.freesound.org/previews/423/423771_8326967-lq.mp3'
+})
+
+d2: s("[clicky*6 ~ clicky*4]")
+  .gain(0.25)
+  .delayt("<0.1 0.3>")
+  .every(4, x => x.hurry(2))
+  .pan("<0.2 0.8>")
+
+d3: n("0 4 7 9 7 4 2 ~")
+  .scale("c4:major")
+  .sound("sine")
+  .gain(0.4)
+  .delayt("<0.3 0.5>")
+  .delayfb(0.25)
+  .ply("<2 3>")
+  .slow(2)
+  .pan("<0.1 0.9>")
+  .every(8, x => x.degradeBy(0.3))
+
+d4: note("c2 ~ g1 bb1")
+  .sound("triangle")
+  .octave(1)
+  .lpf(700)
+  .gain(0.8)
+  .slow(2)
+
+d5: s("bubble*2 ~")
+  .gain(0.2)
+  .speed("<0.7 1 1.2>")
+  .room(0.8)
+  .delayt("<0.3 0.6>")
+  .pan("<0 1>")
+  .slow(2)
