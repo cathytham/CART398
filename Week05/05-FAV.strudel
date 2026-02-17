@@ -3,7 +3,7 @@
 // @by cathytham
 // @date Feb 16, 2026
 
-$: chord("<G Csus2> <Bm Em D> <C G> <Em D C G>").voicing()
+$: chord("<G C2> <Bm Em D> <C G> <Em D C G>").voicing()
   .every(4, x => x.slow(2).ply("<4 3>").gain(0.6))
   .degradeBy(0.1)
   .room(0.3)
@@ -19,6 +19,6 @@ $: note("g4 ~ c5 ~ eb5 ~ g5 ~")
   .every(8, x => x.ply(2)) 
   .slow(1.2)
 
-d1: s("[bd ~ hh ~]*2")
+$: s("[bd ~ hh ~]*2")
   .gain(0.5)
   .room(0.2)
