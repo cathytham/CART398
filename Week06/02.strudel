@@ -1,0 +1,57 @@
+// @title W06-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 21, 2026
+
+setcps(120/60/4)
+
+samples({
+  tap: 'https://cdn.freesound.org/previews/478/478282_9961300-lq.mp3',
+  pling: 'https://cdn.freesound.org/previews/844/844251_12873144-lq.mp3'
+})
+
+let beat = s("[tap ~ tap d5 ~ ~ b4 tap]")
+  .gain(2)
+  .delayt("<0.05 0.2>")
+  .every(4, x => x.hurry(2))
+  .pan("<-0.3 0.3>")
+  .room(0.2)
+
+let lead = n("0 2 4 5 7 5 4 2")
+  .scale("g3:minor")
+  .sound("saw")
+  .gain(0.3)
+  .ply("<2 3>")
+  .delayt(0.3)
+  .delayfb(0.25)
+  .slow(2)
+  .pan("<0.1 0.9>")
+  .every(8, x => x.degradeBy(0.2))
+
+let bass = note("g1 ~ d1 bb0 ~")
+  .sound("triangle")
+  .octave(1)
+  .lpf(500)
+  .gain(0.7)
+  .slow(2)
+  .room(0.2)
+
+let pad = n("g4 ~ b4 d5 ~ ~ b4 g4")
+  .sound("sine")
+  .gain(0.2)
+  .slow(4)
+  .delayt(0.5)
+  .delayfb(0.3)
+  .pan(sine)
+  .every(16, x => x.degradeBy(0.3))
+
+let intro = stack(beat).room(1).delay(0.3).sometimesBy(.1,ply("2"))
+let main = stack(beat, bass, lead)
+let second = stack(beat, bass, lead, pad).sometimesBy(.1,ply("2")).seg(16)
+
+$: arrange(
+  [4, intro],
+  [8, main],
+  [4, second],
+  [4, main]
+)
