@@ -1,0 +1,47 @@
+// @title W06-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 21, 2026
+samples({
+  bubble: 'https://cdn.freesound.org/previews/739/739834_5287430-lq.mp3',
+  clicky: 'https://cdn.freesound.org/previews/423/423771_8326967-lq.mp3'
+})
+
+let perc = s("[clicky*6 ~ clicky*4]")
+  .gain(0.2)
+  .delayt("<0.1 0.25>")
+  .every(4, x => x.hurry(2))
+  .pan("<0.2 0.8>")
+  .room(0.3)
+
+let arp = n("0 4 7 9 7 4 2 ~")
+  .scale("c4:major")
+  .sound("sine")
+  .gain(0.35)
+  .delayt("<0.25 0.45>")
+  .delayfb(0.3)
+  .ply("<2 3>")
+  .slow(2)
+  .pan("<0.1 0.9>")
+  .every(8, x => x.degradeBy(0.3))
+
+let bass = note("c2 ~ g1 bb1")
+  .sound("triangle")
+  .octave(1)
+  .lpf(600)
+  .gain(0.7)
+  .slow(2)
+  .room(0.2)
+
+let bubble = s("~ bubble ~ ~")
+  .gain(0.15)
+  .slow(2)
+  .pan(sine)
+  .every(8, x => x.rev())
+
+$: arrange(
+  [4, stack(perc, bass)],
+  [8, stack(perc, arp, bass).room(saw.fast(4)).range(0.5, 1)],
+  [2, stack(perc, bass).fast(4).sometimesBy(.1,ply("2")).gain(0.5).seg(16)],
+  [4, stack(perc, arp, bass, bubble)]    
+)
