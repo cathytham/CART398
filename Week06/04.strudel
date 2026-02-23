@@ -1,0 +1,27 @@
+// @title W06-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 23, 2026 (remix)
+
+setCps(130/60/4) 
+
+$: s("bd").struct("0 1 ~ 0").fast(3).gain(0.6).seg(12).dec(.05) 
+$: s("bd").struct("{1 0 1 0 0 1 0 1}%8").gain(0.5)             
+$: s("bd!12").dec(0.05).gain(0.35).pan("<-0.2 0.2>")            
+$: s("sh").pan(square.fast(5)).room(0.6).gain(0.4).speed(2)                                    
+
+
+let sec1 = stack(
+  n("[~ 3]!2").sound("bd"),                
+  n("bd(3,8)").room(0.5),                    
+  n("sh/1*4 ~ bd/1").gain(0.4).slow(2)    
+)
+
+let sec2 = s("clap/1").room(0.8).gain(0.25)    
+
+$: arrange(
+  [4, sec1.room(1)],
+  [4, sec2.room(1)],
+  [4, stack(sec1.room(1),sec2).delayt("<0.1 0.3>")],
+  [4, stack(sec1| sec2).sometimesBy(.1,ply("2"))]
+)
