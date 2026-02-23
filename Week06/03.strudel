@@ -1,0 +1,54 @@
+// @title W06-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 23, 2026
+
+setCps(140/60/4)
+
+
+$: s("sh").struct("0 1").fast(4).sometimesBy(.1, ply("2"))
+  .gain(0.7).seg(16).dec(.1)
+$: s("casio/2").room(1).gain(0.2)
+
+let sec1 = stack(
+  n("[~ 2]!2").sound("dr550_cp"),
+  n("bd(3,8)").room(0.5)
+)
+
+let sec1a = stack(
+  n("[~ 2]!2").sound("dr550_cp"),
+  n("- [2?0.5 2?0.5]")
+    .sound("dr550_cp")
+    .scale("d:minor")
+    .legato(0.8)
+    .gain(0.25).room(0.5)
+    .delay(1).delayfb(0.8).size(1),
+  n("bd(3,8)").room(0.5)
+)
+
+let sec1b = stack(
+  n("[~ 2]!2").sound("casio"),
+  n("- [2 2?0.5]").sound("casio")
+    .scale("d:minor").mode("below:d2").legato(0.8)
+    .gain(0.25).room(0.5)
+    .delay(1).delayfb(0.8).pan(sine).size(1),
+  n("bd(3,8)")
+)
+
+let sec2 = stack(
+  n("[2 -]!2").sound("dr550_cp").dfb(1),
+  n("- 2?0.5").sound("dr550_cp").dfb(1)
+)
+
+$: arrange(
+  [4, sec1.room(1)],
+  [4, sec1a.room(1.5)],
+  [4, stack(sec1b.room(saw.slow(4)).gain(saw.slow(4).range(0.5, 1)), sec2)],
+  [4, sec1b.room(saw.slow(4)).gain(saw.slow(4).range(0.5, 1))]
+)
+
+
+
+
+
+
