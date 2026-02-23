@@ -1,0 +1,36 @@
+// @title W06-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathytham
+// @date Feb 23, 2026
+
+setCps(130/60/4)
+
+let drums = stack(
+  s("bd").struct("1 0 0 1 0 1 0 0").gain(0.8),
+  s("sd").struct("~ 0 1 0 ~ 0 1 0").gain(0.6),
+  s("hh*8").gain(0.3)
+)
+
+let drums2 = stack(
+  s("bd").struct("1 ~ 0 1 ~ 0 0 1").gain(0.8),
+  s("sd").struct("~ 0 1 0 ~ 0 1 0").gain(0.6),
+  s("hh*16").gain(0.25)
+)
+
+let melody = note("d4 c5 bb4 g4 ~ bb4 c5 d5")
+  .sound("sine")
+  .attack(0.1)
+  .release(0.5)
+  .gain(0.7)
+  .delay(0.25)
+  .delayfb(0.3)
+  .pan(sine)
+  .slow(2)
+
+$: arrange(
+  [4, drums],                       
+  [4, stack(drums, melody)],         
+  [4, stack(drums2, melody)],        
+  [4, drums2]                        
+)
+
