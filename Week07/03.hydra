@@ -1,0 +1,18 @@
+// @title W07-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date March 7, 2026
+
+// 03
+shape(6,0.5,0.5)
+  .repeat(4,4)
+  .kaleid(8)
+  .rotate(()=>time*0.3)
+  .modulate(osc(10,0.1))
+  .color(
+    ()=>Math.sin(time)*0.6+0.8,  
+    0.3,                          
+    ()=>Math.cos(time)*0.8+1.2
+  )
+  .scale(()=>Math.sin(time)*0.3+1.2)
+  .out()
