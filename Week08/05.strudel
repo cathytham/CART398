@@ -1,0 +1,62 @@
+// @title W08-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date March 14, 2026
+
+// 05
+
+$: s("[bd ~ ~ hh]*2")
+  .gain(0.2)
+  .room(0.2)
+
+$: note("<c4 g4> <a3 e4> <f3 c4> <g3 d4>")
+  .sound("triangle")
+  .attack(0.6)
+  .release(2)
+  .gain(0.5)
+  .room(0.9)
+  .slow(2)
+
+$: note("g5 a5 c6 a5")
+  .sound("sine")
+  .gain(0.15)
+  .delayt(0.4)
+  .delayfb(0.3)
+  .pan("<0 1>")
+  .slow(3)
+
+$: note("g4 a4 c5 d5 c5 a4 g4 ~")
+  .scale("c4:major")
+  .sound("triangle")
+  .attack(0.12)
+  .release(0.5)
+  .gain(0.3)
+  .delayt(0.35)
+  .delayfb(0.2)
+  .room(0.5)
+  .pan("<0 1>")
+  .slow(2)
+
+$: note("e1 e1 g1 [g1 e1]")
+  .s("gm_synth_bass_1")
+.lpf(300)
+.gain(0.8)
+
+$: note("e1 ~ g1 ~")
+  .s("gm_synth_bass_1")
+.lpf(300)
+.gain(0.8)
+
+$: note("<[e4 e4 g4 g4] [e4 g4 e4 d4] [c4 c4 d4 e4] [d4 c4 c4 e4]*2 [g4 e4 d4 c4] ~>")
+.s("sine")
+.gain(0.7)
+.room(0.9)
+.delay(0.6)
+
+$: note("c6 g5 a5 g5")
+  .sound("sine")
+  .gain(0.18)
+  .delayt(0.4)
+  .delayfb(0.25)
+  .pan("<0.2 0.8>")
+  .slow(4)
