@@ -1,0 +1,12 @@
+// @title W09-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date March 21, 2026
+
+// 03
+
+osc(8,0.3,2)
+  .diff(o0)
+  .kaleid(6)
+  .rotate(()=>time*0.1)
+  .out(o0)
