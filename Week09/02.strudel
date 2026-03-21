@@ -1,0 +1,79 @@
+samples({
+  bubble: 'https://cdn.freesound.org/previews/739/739834_5287430-lq.mp3',
+  clicky: 'https://cdn.freesound.org/previews/423/423771_8326967-lq.mp3'
+})
+
+let perc = stack(
+  s("[clicky*6 ~ clicky*4]")
+    .gain(0.45)
+    .delayt("<0.1 0.25>")
+    .pan("<0.2 0.8>")
+    .room(0.3)
+    .every(4, x => x.hurry(2))
+    .every(8, x => x.rev()),
+
+  s("bubble")
+    .gain(0.25)
+    .slow(4)
+    .room(0.6)
+    .pan(sine)
+)
+
+let drums = stack(
+  s("bd").struct("1 0 0 1 0 1 0 0").gain(0.8),
+  s("sd").struct("~ 0 1 0 ~ 0 1 0").gain(0.6),
+  s("hh*8").gain(0.3)
+).every(8, x => x.rev())
+
+let drums2 = stack(
+  s("bd")
+    .struct("1 ~ 0 1 ~ 0 0 1")
+    .gain(0.9),
+
+  s("sd")
+    .struct("~ 0 1 0 ~ 0 1 0")
+    .gain(0.65)
+    .room(0.2),
+
+  s("hh*16")
+    .gain(0.22)
+    .pan("<-0.3 0.3>"),
+
+  s("sd")
+    .struct("~ ~ 0 ~ ~ ~ 0 ~")
+    .gain(0.25)
+    .room(0.3)
+).every(6, x => x.hurry(2))
+
+let pad = n("g4 ~ b4 d5 ~ ~ b4 g4")
+  .sound("sine")
+  .gain(0.2)
+  .slow(4)
+  .delayt(0.5)
+  .delayfb(0.3)
+  .pan(sine)
+  .room(0.5)
+  .every(16, x => x.degradeBy(0.3))
+  .every(12, x => x.rev())
+
+let texture = note("<g5 b5 d6 b5>")
+  .sound("triangle")
+  .gain(0.12)
+  .slow(8)
+  .delayt(0.4)
+  .delayfb(0.3)
+  .pan("<-0.5 0.5>")
+  .room(0.7)
+
+let second = stack(drums2, pad)
+  .sometimesBy(.1, ply("2"))
+  .seg(16)
+
+$: arrange(
+  [2, drums],
+  [4, stack(drums, pad)],
+  [4, second],
+  [4, stack(drums, drums2, perc)],
+  [4, stack(drums2, perc, texture)],
+  [8, stack(drums2, perc)]
+).gain(0.2)
