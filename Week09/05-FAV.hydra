@@ -1,0 +1,41 @@
+// @title W09-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by cathy tham
+// @date March 21, 2026
+
+// 05
+osc(180,0.08,2)
+.modulate(
+  noise(3,0.2)
+    .rotate(()=>time*0.15)
+)
+.mult(
+  osc(40,-0.1,3)
+    .pixelate(60,60)
+    .kaleid(7)
+)
+.color(
+  ()=>Math.sin(time*0.4)*1.5+1,
+  0.2,
+  ()=>Math.cos(time*0.6)*1.5+1.2
+)
+.add(
+  voronoi(8,2,3)
+    .rotate(()=>time*0.1)
+    .kaleid(9)
+    .color(0.2,0.5,1.8)
+)
+.modulate(
+  osc(6,-0.1,2)
+    .rotate(()=>time*0.2)
+)
+.add(
+  osc(4,0.5,1)
+    .color(0.3,0.1,1.5)
+)
+.scale(()=>Math.sin(time*0.5)*0.5+1.5)
+.contrast(2)
+.saturate(2)
+.posterize(4)
+.out()
+
